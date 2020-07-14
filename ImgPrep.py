@@ -30,25 +30,15 @@ def read_img(img_path):
     return img_array
 
 
-def reshape_array(arr):
+def reshape_array(arr, starting_dim):
 
     """
     flatten array to (shape # of pixels, 3)
     """
-
-    return np.reshape(arr, (arr.shape[0] * arr.shape[1], arr.shape[2]), order="C")
-
-
-def display_img(array):
-
-    """
-    display image
-    """
-
-    arr = array.astype(dtype="uint8")
-    img = Image.fromarray(arr, "RGB")
-    plt.figure()
-    plt.imshow(np.asarray(img))
+    if starting_dim == 3:
+        return np.reshape(arr, (arr.shape[0] * arr.shape[1], arr.shape[2]), order="C")
+    else:
+        return np.reshape(arr, (1, arr.shape[0] * arr.shape[1]), order = "C")
 
 
 def split_img(arr, nrow, ncol):
