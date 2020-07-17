@@ -66,3 +66,47 @@ def split_img(arr, nrow, ncol):
         pieces += cols
 
     return pieces
+
+
+def remove_background(arr):
+    
+    """
+    remove background from image
+    """
+    
+    img = ski.color.rgb2gray(arr)
+    sobel = filters.sobel(img)
+    blurred = filters.gaussian(sobel, sigma=10)
+
+    bgremoved = arr.copy()
+    for i in range(bgremoved.shape[0]):
+        for j in range(bgremoved.shape[1]):
+            if blurred[i,j] <= 0.02:
+                bgremoved[i,j] = [0, 0, 0]
+                
+    return bgremoved
+
+def glcm(arr):
+    
+    """
+    create gray level co-occurence matrix for image with background removed and calculate texture features
+    """
+    
+    img = ski.color.rgb2gray(arr)
+    img = (img * 255).astype(int)
+    P = skft.greycomatrix(img, [5], [np.pi/8, (3*np.pi)/8, (5*np.pi)/8, (7*np.pi)/8], levels=256)
+    P2 = np.empty([P.shape[0]-1,P.shape[1]-1,P.shape[2],P.shape[3]], dtype = int)
+    P2[:,:,0,0] = P[1:,1:,0,0]
+    P2[:,:,0,1] = P[1:,1:,0,1]
+    P2[:,:,0,2] = P[1:,1:,0,2]
+    P2[:,:,0,3] = P[1:,1:,0,3]
+    
+    features = np.array([])
+    features = np.append(features, skft.greycoprops(P2, 'contrast').flatten())
+    features = np.append(features, skft.greycoprops(P2, 'dissimilarity').flatten())
+    features = np.append(features, skft.greycoprops(P2, 'homogeneity').flatten())
+    features = np.append(features, skft.greycoprops(P2, 'ASM').flatten())
+    features = np.append(features, skft.greycoprops(P2, 'energy').flatten())
+    features = np.append(features, skft.greycoprops(P2, 'correlation').flatten())
+    
+    return features
