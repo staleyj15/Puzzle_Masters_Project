@@ -13,7 +13,7 @@ def file_names(directory):
     store all file names in list for processing
     """
 
-    paths = os.listdir("puzzle_scans/puzzle_1")
+    paths = os.listdir(directory)
     return [
         directory + "/" + file for file in paths if re.search(".jpg", file) is not None
     ]
@@ -25,7 +25,7 @@ def read_img(img_paths, indx):
     read in image and store as array
     """
     
-    pattern = re.compile('_Set' + str(indx) + '_')
+    pattern = re.compile('_Set' + str(indx) + '_|\.')
     for path in img_paths:
         if pattern.search(path) is not None:
             img = Image.open(path)
