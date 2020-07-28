@@ -11,33 +11,6 @@ dst = scipy.spatial.distance.euclidean
 import pandas as pd
 
 
-# @concurrent  # We add this for the concurrent function
-# def process_single_picture(pic):
-    
-#     '''
-#     check RGB values for single picture and return boolean array indicating which pixels are background
-#     '''
-    
-#     def check_rgb(row):
-#         return not ((row >= 210).all() and (row <= 235).all())
-
-#     bool_array = np.apply_along_axis(check_rgb, 1, pic)
-#     return pic[bool_array]
-
-
-# @synchronized  # And we add this for the function which calls the concurrent function
-# def process_all_pics(data):
-    
-#     '''
-#     check RGB values for all pictures to identify background pixels
-#     '''
-    
-#     filtered_pixels = []
-#     for pic in data:
-#         filtered_pixels.append(process_single_picture(pic))
-#     return filtered_pixels
-
-
 def cluster_pixels(pixels, n_clusters):
     
     '''

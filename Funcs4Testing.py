@@ -5,7 +5,7 @@ import random
 import matplotlib.cm as cm
 from sklearn.metrics import silhouette_score
 
-def display_img(array):
+def display_img(array, save = False, filename = ''):
 
     """
     display image
@@ -15,6 +15,9 @@ def display_img(array):
     img = Image.fromarray(arr, "RGB")
     plt.figure()
     plt.imshow(np.asarray(img))
+    if save == True: 
+        filename = 'plots/' + filename + '.png'
+        plt.savefig(filename)
     
 
 def display_cluster_imgs(pictures, labels, cluster_k):
@@ -29,7 +32,7 @@ def display_cluster_imgs(pictures, labels, cluster_k):
         display_img(pictures[indx])
         
 
-def img_scatter(Z, images, k, zoom=0.5):
+def img_scatter(Z, images, k, zoom=0.5, save = False, filename = ''):
     
     '''
     plot node images on top of scatter plot
@@ -66,10 +69,13 @@ def img_scatter(Z, images, k, zoom=0.5):
         )
 
     ax.scatter(Z[:, 0], Z[:, 1])
+    if save == True: 
+        filename = 'plots/' + filename + '.png'
+        plt.savefig(filename)
     plt.show()
     
 
-def plot_silhouette_analysis(X, sample_silhouette_values, cluster_labels, n_clusters):
+def plot_silhouette_analysis(X, sample_silhouette_values, cluster_labels, n_clusters, save = False, filename = ''):
     
     '''
     plot silhouette scores for n_clusters
@@ -110,10 +116,15 @@ def plot_silhouette_analysis(X, sample_silhouette_values, cluster_labels, n_clus
     ax.set_ylabel("Cluster label")
     ax.set_yticks([])  # Clear the yaxis labels / ticks
     ax.set_xticks([-0.1, 0, 0.2, 0.4, 0.6, 0.8, 1])
+    
+    if save == True: 
+        filename = 'plots/' + filename + '.png'
+        plt.savefig(filename)
+        
     plt.show()
     
 
-def plot_gap_stats(gapdf, k):
+def plot_gap_stats(gapdf, k, save = False, filename = ''):
     
     '''
     plot gap-statistic for different numbers of clusters
@@ -125,6 +136,11 @@ def plot_gap_stats(gapdf, k):
     plt.xlabel('Cluster Count')
     plt.ylabel('Gap Value')
     plt.title('Gap Values by Cluster Count')
+    
+    if save == True: 
+        filename = 'plots/' + filename + '.png'
+        plt.savefig(filename)
+    
     plt.show()
 
 

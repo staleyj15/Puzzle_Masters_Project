@@ -25,14 +25,19 @@ def read_img(img_paths, indx):
     read in image and store as array
     """
     
-    pattern = re.compile('_Set' + str(indx) + '_|\.')
+    pattern1 = re.compile('_Set' + str(indx) + '_')
+    pattern2 = re.compile('_Set' + str(indx) + '\.')
     for path in img_paths:
-        if pattern.search(path) is not None:
+        if pattern1.search(path) is not None:
             img = Image.open(path)
-            img_array = np.array(img)#, dtype="int32")
+            img_array = np.array(img)
             img.close()
             return img_array
-    
+        elif pattern2.search(path) is not None:
+            img = Image.open(path)
+            img_array = np.array(img)
+            img.close()
+            return img_array
 
 def reshape_array(arr, starting_dim):
 
