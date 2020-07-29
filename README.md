@@ -35,3 +35,8 @@ A description of the remaining files and directories are include in the table be
 |pickle_files|Pickle files of feature sets. These files can be imported and fed directly into the clustering model in order to skip preprocessing step and speed up script execution.|
 |plots|Images and graphs generated from _Puzzle_Masters_Project_Code.ipynb_ file.|
 |puzzle_scans|Data source containing subdirectory of images for each puzzle.|
+
+<br>
+<br>
+
+The project can be found [here](https://github.com/staleyj15/isye6740_project.git) on GitHub.
