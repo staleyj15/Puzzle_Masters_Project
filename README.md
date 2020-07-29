@@ -5,7 +5,7 @@
 This repository contains the following directories and files:
 
 * _Puzzle_Masters_Project_Code.ipynb_
-* _Puzzle_Masters_ISyE6740_Project.pdf_
+* _Puzzle_Masters_ISyE6740_Report.pdf_
 * _requirements.txt_
 * _Funcs4Testing.py_
 * _ImgCluster.py_
@@ -15,7 +15,7 @@ This repository contains the following directories and files:
 * plots
 * puzzle_scans
 
-The two main deliverables inside of this repository are <span style="color:#2b4e94">**_Puzzle_Masters_Project_Code.ipynb_**</span> and <span style="color:#2b4e94">**_Puzzle_Masters_ISyE6740_Project.pdf_**</span>. These two files contain the summary of our analysis and the code supporting it. 
+The two main deliverables inside of this repository are <span style="color:#2b4e94">**_Puzzle_Masters_Project_Code.ipynb_**</span> and <span style="color:#2b4e94">**_Puzzle_Masters_ISyE6740_Report.pdf_**</span>. These two files contain the summary of our analysis and the code supporting it. 
 
 To select a puzzle and run the code, set the `puzzle_folder` variable at the top of the _Puzzle_Masters_Project_Code.ipynb_ file. Valid values include "puzzle_1", "puzzle_2", or "puzzle_3". 
 
